@@ -1,17 +1,20 @@
+const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
 
+const jsFiles = glob.sync('./dev/script/*.js');
+const entry = {};
+
+jsFiles.forEach((file, i) => {
+    entry[path.basename(file, '.js')] = file;
+});
+
 module.exports = {
-    entry: './dev/script/index.js',
+    entry,
     output: {
         path: './dist',
-        publicPath: 'dist/',
-        filename: 'build.js',
-    },
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.js',
-        },
+        filename: '[name].js',
     },
     module: {
         loaders: [
@@ -21,23 +24,10 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.vue$/,
-                loader: 'vue',
-                options: {
-                    postcss: postcssConfig.plugins,
-                },
-            },
-            {
                 test: /\.s[a|c]ss$/,
                 loader: 'style!css?sourceMap!postcss!sass',
             },
         ],
     },
     postcss: postcssConfig,
-    vue: {
-        loaders: {
-            js: 'babel',
-            scss: 'style!css!sass',
-        },
-    },
 };
