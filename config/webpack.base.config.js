@@ -1,45 +1,68 @@
 const path = require('path');
-const glob = require('glob');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
 
-const jsFiles = glob.sync('./dev/script/*.js');
-const entry = {};
-
-jsFiles.forEach((file, i) => {
-    entry[path.basename(file, '.js')] = file;
-});
-
 module.exports = {
-    entry,
+    context: path.resolve(__dirname, '../dev'),
+    entry: './script/index.js',
     output: {
-        path: './dist',
+        path: path.resolve(__dirname, '../dist'),
         filename: '[name].js',
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/,
+                test: /\.html$/,
+                use: 'html-loader',
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: [/node_modules/],
+                use: 'babel-loader',
             },
             {
                 test: /\.css$/,
-                loader: 'style!css',
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                        }
+                    },
+                ],
             },
             {
                 test: /\.s[a|c]ss$/,
-                loader: 'style!css?sourceMap!postcss!sass',
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        // options: {
+                        //     modules: true,
+                        //     importLoaders: 1,
+                        // }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: postcssConfig,
+                    },
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                loader: 'file-loader?limit=1024&name=font/[name].[ext]',
+                use: 'file-loader?limit=1024&name=font/[name].[ext]',
             },
             {
                 test: /\.(jpg|jpeg|png|gif)$/,
-                loader: 'url-loader?mimetype=image/png',
+                use: 'url-loader?mimetype=image/png',
             },
         ],
     },
-    postcss: postcssConfig,
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+    ],
 };

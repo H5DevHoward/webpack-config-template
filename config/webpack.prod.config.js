@@ -3,9 +3,10 @@ const path = require('path');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = require('./webpack.base.config');
 
-const htmlFiles = glob.sync('./dev/*.html');
+const htmlFiles = glob.sync('*.html');
 const htmlPlugins = htmlFiles.map((file, i) =>
     new HtmlWebpackPlugin({
         filename: path.basename(file),
@@ -20,6 +21,10 @@ const htmlPlugins = htmlFiles.map((file, i) =>
 
 config.plugins = (config.plugins || []).concat([
     ...htmlPlugins,
+    new CleanWebpackPlugin(['dist'], {
+        root: path.resolve(__dirname , '..'),
+        verbose: true,
+    }),
     new webpack.DefinePlugin({
         'process.env': {
             NODE_ENV: '"production"',
@@ -31,22 +36,15 @@ config.plugins = (config.plugins || []).concat([
             drop_console: true,
         },
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new CopyWebpackPlugin([
         {
-            from: './dev',
+            from: './',
         },
     ], {
         ignore: [
-            '*.html',
-            'router.js',
             'style/**/*',
             'script/**/*',
-            'store/**/*',
-            'vendor/**/*',
-            'component/**/*',
-            'data/**/*',
-            'font/**/*',
+            'data.json',
         ],
     }),
 ]);
