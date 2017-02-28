@@ -10,7 +10,7 @@ config.plugins = [
         compress: {
             warnings: true,
         },
-    })
+    }),
 ];
 
 config.devServer = {
