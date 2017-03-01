@@ -10,13 +10,15 @@ $ npm install
 
 > #### **Vue**
 
-- ##### **Init vue template**
+- ##### Init vue template
+
+##### ***test:***
 
 ```
 $ node init vue DemoComponent
 ```
 
-##### **result:**
+##### ***result:***
 
 - ##### Entry文件:  App.vue    (Path: dev/script/components/)
 
@@ -28,13 +30,15 @@ $ node init vue DemoComponent
 
 > #### **React**
 
-- ##### **Init react template**
+- ##### Init react template
+
+##### ***test:***
 
 ```
 $ node init react DemoComponent
 ```
 
-##### **result:**
+##### ***result:***
 
 - ##### Component文件夹:  DemoComponent    (Path: dev/script/components/)
 
@@ -57,3 +61,25 @@ $ npm run vue #预览/开发vue项目
 ```
 $ npm run build #生成最终产品
 ```
+
+
+> ### Tools:
+
+- ***Create a react component folid named 'DemoReactComponent'***
+
+**|DemoReactComponent ----**
+
+**DemoReactComponent.jsx / DemoReactComponent.scss / index.js**
+
+```
+$ node new react DemoReactComponent
+```
+
+- ***Create a vue component file named 'DemoVueComponent.vue'***
+
+**DemoVueComponent.vue**
+
+```
+$ node new vue DemoVueComponent
+```
+
