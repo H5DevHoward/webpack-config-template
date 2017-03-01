@@ -10,7 +10,7 @@ $ npm install
 
 > #### **Vue**
 
-- ##### Init vue template
+- Init vue template
 
 ##### ***test:***
 
@@ -30,7 +30,7 @@ $ node init vue DemoComponent
 
 > #### **React**
 
-- ##### Init react template
+- Init react template
 
 ##### ***test:***
 
