@@ -18,13 +18,13 @@ $ node init vue DemoComponent
 
 ##### **result:**
 
-- ##### Entry:  App.vue    (Path: dev/script/components/)
+- ##### Entry文件:  App.vue    (Path: dev/script/components/)
 
-- ##### Component:  DemoComponent.vue    (Path: dev/script/components/)
+- ##### Component文件:  DemoComponent.vue    (Path: dev/script/components/)
 
-- ##### JS:  index.js    (Path: dev/script/)
+- ##### JS文件:  index.js    (Path: dev/script/)
 
-- ##### HTML:  index.html    (Path: dev/)
+- ##### HTML文件:  index.html    (Path: dev/)
 
 > #### **React**
 
@@ -36,8 +36,24 @@ $ node init react DemoComponent
 
 ##### **result:**
 
-- ##### Component:  DemoComponent    (Path: dev/script/components/)
+- ##### Component文件夹:  DemoComponent    (Path: dev/script/components/)
 
-- ##### JS:  index.js    (Path: dev/script/)
+- ##### JS文件:  index.js    (Path: dev/script/)
 
-- ##### HTML:  index.html    (Path: dev/)
+- ##### HTML文件:  index.html    (Path: dev/)
+
+### Step3.
+
+```
+$ npm run dev #预览/开发普通或react项目
+```
+
+```
+$ npm run vue #预览/开发vue项目
+```
+
+### Step4.
+
+```
+$ npm run build #生成最终产品
+```
