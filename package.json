@@ -33,6 +33,8 @@
         "clean-webpack-plugin": "^0.1.15",
         "copy-webpack-plugin": "^4.0.1",
         "css-loader": "^0.26.1",
+        "eslint": "^3.16.1",
+        "eslint-loader": "^1.6.3",
         "file-loader": "^0.10.0",
         "fs": "0.0.1-security",
         "glob": "^7.1.1",

@@ -7,16 +7,16 @@ config.devtool = 'eval-source-map';
 config.plugins = [
     new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
-        compress: {
-            warnings: true,
-        },
+        // compress: {
+        //     warnings: true,
+        // },
     }),
 ];
 
 config.devServer = {
     contentBase: path.resolve(__dirname, '../dev'),
     // publicPath: '/',
-    port: 8080,
+    // port: 8080,
     historyApiFallback: true,
     stats: {
         colors: true,
