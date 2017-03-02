@@ -181,12 +181,12 @@ if (TYPE === 'vue') initVueTemplate();
 if (TYPE === 'react') initReactTemplate();
 
 if (fs.existsSync('dev/index.html')) {
-    console.log('========== folder exist ==========');
+    console.log('========== file exist ==========');
 } else {
     fs.writeFileSync('dev/index.html', html);
 }
 if (fs.existsSync('dev/script/index.js')) {
-    console.log('========== folder exist ==========');
+    console.log('========== file exist ==========');
 } else {
     fs.writeFileSync('dev/script/index.js', js);
 }
