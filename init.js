@@ -67,8 +67,8 @@ import ${NAME} from './${NAME}.vue';
 export default {
     components: {
         ${NAME},
-    }
-}
+    },
+};
 </script>
 
 <!-- <style lang="scss"></style> -->
@@ -82,7 +82,7 @@ export default {
 <script>
 export default {
 
-}
+};
 </script>
 
 <style lang="scss" scoped>

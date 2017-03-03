@@ -3,10 +3,10 @@ const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
 
 module.exports = {
-    context: path.resolve(__dirname, '../dev'),
+    context: path.join(process.cwd(), 'dev'),
     entry: './script/index.js',
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: path.join(process.cwd(), 'dist'),
         filename: '[name].js',
     },
     module: {
@@ -17,7 +17,7 @@ module.exports = {
             },
             {
                 test: /\.jsx?$/,
-                exclude: [/node_modules/],
+                exclude: /node_modules/,
                 use: [
                     'babel-loader',
                     {
@@ -33,33 +33,27 @@ module.exports = {
                 test: /\.vue$/,
                 use: [
                     'vue-loader',
-                    'eslint-loader',
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            failOnWarning: true,
+                            failOnError: true,
+                        },
+                    },
                 ],
             },
             {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    {
-                        loader: 'css-loader',
-                        // options: {
-                        //     modules: true,
-                        //     importLoaders: 1,
-                        // }
-                    },
+                    'css-loader',
                 ],
             },
             {
                 test: /\.s[a|c]ss$/,
                 use: [
                     'style-loader',
-                    {
-                        loader: 'css-loader',
-                        // options: {
-                        //     modules: true,
-                        //     importLoaders: 1,
-                        // }
-                    },
+                    'css-loader',
                     {
                         loader: 'postcss-loader',
                         options: postcssConfig,
@@ -87,8 +81,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
         new webpack.LoaderOptionsPlugin({
             options: {
                 postcss: postcssConfig.plugins,
