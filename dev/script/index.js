@@ -1,9 +1,9 @@
 import 'babel-polyfill';
-import Vue from 'vue';
-import App from './components/App.vue';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Test from './components/Test';
 
-const app = new Vue({
-    components: {
-        App,
-    },
-}).$mount('#root');
+ReactDOM.render(
+    <Test />,
+    document.getElementById('root')
+);

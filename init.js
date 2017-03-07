@@ -176,6 +176,11 @@ export default class ${NAME} extends Component {
     }
 }
 
+if (fs.existsSync('dev/script/components')) {
+    console.log('========== folder exist ==========');
+} else {
+    fs.mkdirSync('dev/script/components');
+}
 
 if (TYPE === 'vue') initVueTemplate();
 if (TYPE === 'react') initReactTemplate();

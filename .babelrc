@@ -10,4 +10,15 @@
     "plugins": [
         "transform-runtime",
     ],
+    "env": {
+        "development": {
+            "plugins": []
+        },
+        "production": {
+            "plugins": [
+                "transform-react-inline-elements",
+                "transform-react-constant-elements",
+            ],
+        },
+    },
 }

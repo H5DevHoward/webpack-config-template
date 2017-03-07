@@ -1,7 +1,9 @@
 const path = require('path');
+// const fs = require('fs');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
-
+// const babelSettings = JSON.parse(fs.readFileSync('.babelrc'));
+process.noDeprecation = true;
 module.exports = {
     context: path.join(process.cwd(), 'dev'),
     entry: './script/index.js',
@@ -19,7 +21,12 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: [
-                    'babel-loader',
+                    {
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['env'],
+                        },
+                    },
                     {
                         loader: 'eslint-loader',
                         options: {
@@ -75,7 +82,7 @@ module.exports = {
         alias: {
             vue$: 'vue/dist/vue.js',
         },
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.vue'],
         modules: [
             'node_modules',
         ],
