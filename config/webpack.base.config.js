@@ -1,9 +1,9 @@
 const path = require('path');
-// const fs = require('fs');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
-// const babelSettings = JSON.parse(fs.readFileSync('.babelrc'));
+
 process.noDeprecation = true;
+
 module.exports = {
     context: path.join(process.cwd(), 'dev'),
     entry: './script/index.js',
@@ -53,14 +53,14 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                 ],
             },
             {
                 test: /\.s[a|c]ss$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     {
                         loader: 'postcss-loader',
                         options: postcssConfig,

@@ -1,9 +1,9 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Test from './components/Test';
+import Loading from './components/Loading';
 
 ReactDOM.render(
-    <Test />,
+    <Loading />,
     document.getElementById('root')
 );
