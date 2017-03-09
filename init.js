@@ -131,7 +131,9 @@ import ReactDOM from 'react-dom';
 import ${NAME} from './components/${NAME}';
 
 ReactDOM.render(
-    <${NAME} />,
+    <div className="app">
+        <${NAME} />
+    </div>,
     document.getElementById('root')
 );
 `;
