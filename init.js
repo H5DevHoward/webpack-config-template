@@ -89,12 +89,12 @@ export default {
 </style>`;
 
     if (fs.existsSync('dev/script/components/App.vue')) {
-        console.log('========== component exist ==========');
+        console.log('========== App.vue component exist ==========');
     } else {
         fs.writeFileSync('dev/script/components/App.vue', app);
     }
     if (fs.existsSync(`dev/script/components/${NAME}.vue`)) {
-        console.log('========== component exist ==========');
+        console.log(`========== ${NAME}.vue component exist ==========`);
     } else {
         fs.writeFileSync(`dev/script/components/${NAME}.vue`, component);
     }
@@ -167,7 +167,7 @@ export default class ${NAME} extends Component {
     const scss = `.${NAME} {}`;
 
     if (fs.existsSync(`dev/script/components/${NAME}`)) {
-        console.log('========== folder exist ==========');
+        console.log(`========== ${NAME} folder exist ==========`);
     } else {
         fs.mkdirSync(`dev/script/components/${NAME}`);
         fs.writeFileSync(`dev/script/components/${NAME}/index.js`, entry);
@@ -177,7 +177,7 @@ export default class ${NAME} extends Component {
 }
 
 if (fs.existsSync('dev/script/components')) {
-    console.log('========== folder exist ==========');
+    console.log('========== components folder exist ==========');
 } else {
     fs.mkdirSync('dev/script/components');
 }
@@ -186,12 +186,12 @@ if (TYPE === 'vue') initVueTemplate();
 if (TYPE === 'react') initReactTemplate();
 
 if (fs.existsSync('dev/index.html')) {
-    console.log('========== file exist ==========');
+    console.log('========== index.html file exist ==========');
 } else {
     fs.writeFileSync('dev/index.html', html);
 }
 if (fs.existsSync('dev/script/index.js')) {
-    console.log('========== file exist ==========');
+    console.log('========== index.js file exist ==========');
 } else {
     fs.writeFileSync('dev/script/index.js', js);
 }

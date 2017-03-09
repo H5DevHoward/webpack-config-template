@@ -1,6 +1,6 @@
 # webpack2-config-template
 
-### Step1. 
+### Step1.
 
 ```
 $ npm install
@@ -15,18 +15,22 @@ $ npm install
 ##### ***test:***
 
 ```
-$ node init vue DemoComponent
+$ npm run init vue DemoComponent
 ```
 
 ##### ***result:***
 
-- ##### Entry文件:  App.vue    (Path: dev/script/components/)
+- ##### Entry:
+  App.vue    (Path: dev/script/components/)
 
-- ##### Component文件:  DemoComponent.vue    (Path: dev/script/components/)
+- ##### Component:
+  DemoComponent.vue    (Path: dev/script/components/)
 
-- ##### JS文件:  index.js    (Path: dev/script/)
+- ##### JS:  
+  index.js    (Path: dev/script/)
 
-- ##### HTML文件:  index.html    (Path: dev/)
+- ##### HTML:  
+  index.html    (Path: dev/)
 
 > #### **React**
 
@@ -35,21 +39,28 @@ $ node init vue DemoComponent
 ##### ***test:***
 
 ```
-$ node init react DemoComponent
+$ npm run init react DemoComponent
 ```
 
 ##### ***result:***
 
-- ##### Component文件夹:  DemoComponent    (Path: dev/script/components/)
+- ##### Component:  
+  DemoComponent    (Path: dev/script/components/)
 
-- ##### JS文件:  index.js    (Path: dev/script/)
+- ##### JS:  
+  index.js    (Path: dev/script/)
 
-- ##### HTML文件:  index.html    (Path: dev/)
+- ##### HTML:  
+  index.html    (Path: dev/)
 
 ### Step3.
 
 ```
-$ npm run dev #预览/开发普通或react项目
+$ npm run dev #预览/开发普通项目
+```
+
+```
+$ npm run react #预览/开发react项目
 ```
 
 ```
@@ -72,7 +83,7 @@ $ npm run build #生成最终产品
 **DemoReactComponent.jsx / DemoReactComponent.scss / index.js**
 
 ```
-$ node new react DemoReactComponent
+$ npm run new react DemoReactComponent
 ```
 
 - ***Create a vue component file named 'DemoVueComponent.vue'***
@@ -80,6 +91,5 @@ $ node new react DemoReactComponent
 **DemoVueComponent.vue**
 
 ```
-$ node new vue DemoVueComponent
+$ npm run new vue DemoVueComponent
 ```
-

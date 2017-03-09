@@ -19,7 +19,7 @@ export default {
 </style>`;
 
     if (fs.existsSync(`dev/script/components/${NAME}.vue`)) {
-        console.log('========== component exist ==========');
+        console.log(`========== ${NAME}.vue component exist ==========`);
     } else {
         fs.writeFileSync(`dev/script/components/${NAME}.vue`, component);
     }
@@ -57,7 +57,7 @@ export default class ${NAME} extends Component {
     const scss = `.${NAME} {}`;
 
     if (fs.existsSync(`dev/script/components/${NAME}`)) {
-        console.log('========== folder exist ==========');
+        console.log(`========== ${NAME} folder exist ==========`);
     } else {
         fs.mkdirSync(`dev/script/components/${NAME}`);
         fs.writeFileSync(`dev/script/components/${NAME}/index.js`, entry);
