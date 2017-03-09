@@ -20,6 +20,8 @@ $ npm run init vue DemoComponent
 
 ##### ***result:***
 
+[init vue](https://raw.githubusercontent.com/H5DevHoward/ImageCaches/master/init%20vue.png)
+
 - ##### Entry:
   App.vue    (Path: dev/script/components/)
 
@@ -43,6 +45,8 @@ $ npm run init react DemoComponent
 ```
 
 ##### ***result:***
+
+[init react](https://raw.githubusercontent.com/H5DevHoward/ImageCaches/master/init%20react.png)
 
 - ##### Component:  
   DemoComponent    (Path: dev/script/components/)
@@ -78,18 +82,16 @@ $ npm run build #生成最终产品
 
 - ***Create a react component folid named 'DemoReactComponent'***
 
-**|DemoReactComponent ----**
-
-**DemoReactComponent.jsx / DemoReactComponent.scss / index.js**
-
 ```
 $ npm run new react DemoReactComponent
 ```
 
-- ***Create a vue component file named 'DemoVueComponent.vue'***
+[new react component](https://raw.githubusercontent.com/H5DevHoward/ImageCaches/master/new%20react.png)
 
-**DemoVueComponent.vue**
+- **Create a vue component file named 'DemoVueComponent.vue'***
 
 ```
 $ npm run new vue DemoVueComponent
 ```
+
+[new vue component](https://github.com/H5DevHoward/ImageCaches/blob/master/new%20vue.png)

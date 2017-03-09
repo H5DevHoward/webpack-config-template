@@ -66,5 +66,11 @@ export default class ${NAME} extends Component {
     }
 }
 
+if (fs.existsSync('dev/script/components')) {
+    console.log('========== components folder exist ==========');
+} else {
+    fs.mkdirSync('dev/script/components');
+}
+
 if (TYPE === 'vue') generateVueComponent();
 if (TYPE === 'react') generateReactComponent();
