@@ -4,10 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --open --watch --config config/webpack.dev.config.js",
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --open --watch --config config/webpack.dev.config.js",
         "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --hide-modules --config config/webpack.prod.config.js",
         "react": "cross-env NODE_ENV=development webpack-dev-server --inline --open --watch --config config/webpack.react.config.js",
-        "vue": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --open --watch --config config/webpack.vue.config.js",
+        "vue": "cross-env NODE_ENV=development webpack-dev-server --inline --open --watch --config config/webpack.vue.config.js",
         "init": "node init",
         "new": "node new"
     },
