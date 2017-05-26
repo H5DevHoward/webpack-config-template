@@ -30,13 +30,13 @@ module.exports = {
                             presets: ['env'],
                         },
                     },
-                    // {
-                    //     loader: 'eslint-loader',
-                    //     options: {
-                    //         failOnWarning: true,
-                    //         failOnError: true,
-                    //     },
-                    // },
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            failOnWarning: true,
+                            failOnError: true,
+                        },
+                    },
                 ],
             },
             // {
@@ -73,7 +73,7 @@ module.exports = {
                 test: /\.s[a|c]ss$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     {
                         loader: 'postcss-loader',
                         options: postcssConfig,
@@ -102,9 +102,9 @@ module.exports = {
         new webpack.LoaderOptionsPlugin({
             options: {
                 postcss: postcssConfig.plugins,
-                // eslint: {
-                //     configFile: path.join(process.cwd(), '.eslintrc'),
-                // },
+                eslint: {
+                    configFile: path.join(process.cwd(), '.eslintrc'),
+                },
             },
         }),
         // new ExtractTextPlugin({

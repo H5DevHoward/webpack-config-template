@@ -12,6 +12,7 @@
         "self": true,
         "System": true,
         "import": true,
+        "define": true,
     },
     "parserOptions": {
         "ecmaVersion": 6,
