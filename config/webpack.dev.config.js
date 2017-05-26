@@ -2,10 +2,14 @@ const config = require('./webpack.base.config');
 const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(config, {
     devtool: 'eval-source-map',
     devServer: {
+        proxy: {
+            '/api': 'http://localhost:8081',
+        },
         contentBase: path.join(process.cwd(), 'dev'),
         historyApiFallback: true,
         stats: {
@@ -25,6 +29,10 @@ module.exports = merge(config, {
             compress: {
                 warnings: false,
             },
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.join(process.cwd(), 'dev', 'index.html'),
         }),
     ],
 });

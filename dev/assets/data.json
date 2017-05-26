@@ -1,0 +1,28 @@
+[
+    {
+        "username": "howard",
+        "password": "123",
+        "isAdmin": true,
+        "isSuperAdmin": true,
+        "name": "郑浩",
+        "sex": "male",
+        "age": 25,
+        "department": [
+            "develop",
+            "web"
+        ]
+    },
+    {
+        "username": "ekko",
+        "password": "12",
+        "isAdmin": false,
+        "isSuperAdmin": false,
+        "name": "艾克",
+        "sex": "female",
+        "age": 18,
+        "department": [
+            "operate",
+            "ooo"
+        ]
+    }
+]
