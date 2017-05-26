@@ -1,15 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 process.noDeprecation = true;
 
 module.exports = {
     context: path.join(process.cwd(), 'dev'),
-    entry: './script/index.js',
+    entry: './index.js',
     output: {
         path: path.join(process.cwd(), 'dist'),
-        filename: '[name].js',
+        filename: `[name]${process.env.NODE_ENV === 'development' ? '' : '[chunkhash:8]'}.js`,
     },
     module: {
         rules: [
@@ -27,28 +30,38 @@ module.exports = {
                             presets: ['env'],
                         },
                     },
-                    {
-                        loader: 'eslint-loader',
-                        options: {
-                            failOnWarning: true,
-                            failOnError: true,
-                        },
-                    },
+                    // {
+                    //     loader: 'eslint-loader',
+                    //     options: {
+                    //         failOnWarning: true,
+                    //         failOnError: true,
+                    //     },
+                    // },
                 ],
             },
-            {
-                test: /\.vue$/,
-                use: [
-                    'vue-loader',
-                    {
-                        loader: 'eslint-loader',
-                        options: {
-                            failOnWarning: true,
-                            failOnError: true,
-                        },
-                    },
-                ],
-            },
+            // {
+            //     test: /\.css$/,
+            //     use: ExtractTextPlugin.extract({
+            //         fallback: 'style-loader',
+            //         use: 'css-loader',
+            //         publicPath: '/dist',
+            //     }),
+            // },
+            // {
+            //     test: /\.s[a|c]ss$/,
+            //     use: ExtractTextPlugin.extract({
+            //         fallback: 'style-loader',
+            //         use: [
+            //             'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            //             {
+            //                 loader: 'postcss-loader',
+            //                 options: postcssConfig,
+            //             },
+            //             'sass-loader',
+            //         ],
+            //         publicPath: '/dist',
+            //     }),
+            // },
             {
                 test: /\.css$/,
                 use: [
@@ -79,32 +92,33 @@ module.exports = {
         ],
     },
     resolve: {
-        alias: {
-            vue$: 'vue/dist/vue.js',
-        },
-        extensions: ['.js', '.jsx', '.vue'],
+        extensions: ['.js'],
         modules: [
             'node_modules',
         ],
     },
     plugins: [
+        new NyanProgressPlugin(), // 进度条
         new webpack.LoaderOptionsPlugin({
             options: {
                 postcss: postcssConfig.plugins,
-                vue: {
-                    postcss: postcssConfig.plugins,
-                    loaders: {
-                        sass: 'style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
-                        scss: 'style-loader!css-loader!postcss-loader!sass-loader',
-                    },
-                    cssModules: {
-                        localIdentName: '[path][name]---[local]---[hash:base64:5]',
-                        camelCase: true,
-                    },
-                },
-                eslint: {
-                    configFile: path.join(process.cwd(), '.eslintrc'),
-                },
+                // eslint: {
+                //     configFile: path.join(process.cwd(), '.eslintrc'),
+                // },
+            },
+        }),
+        // new ExtractTextPlugin({
+        //     filename: 'style.css',
+        //     disable: false,
+        //     allChunks: true,
+        // }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.join(process.cwd(), 'dev', 'index.html'),
+            inject: true,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
             },
         }),
     ],
