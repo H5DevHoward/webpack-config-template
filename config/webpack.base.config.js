@@ -73,7 +73,7 @@ module.exports = {
                 test: /\.s[a|c]ss$/,
                 use: [
                     'style-loader',
-                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    'css-loader', // ?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]
                     {
                         loader: 'postcss-loader',
                         options: postcssConfig,
@@ -83,11 +83,11 @@ module.exports = {
             },
             {
                 test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                use: 'file-loader?limit=1024&name=font/[name].[ext]',
+                use: 'file-loader?limit=1024&name=assets/font/[name].[ext]',
             },
             {
                 test: /\.(jpg|jpeg|png|gif)$/,
-                use: 'url-loader?mimetype=image/png',
+                use: 'url-loader?mimetype=image/png&name=assets/img/[name]-[hash:6].[ext]',
             },
         ],
     },
