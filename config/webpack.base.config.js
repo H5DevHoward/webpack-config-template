@@ -2,29 +2,27 @@ const path = require('path');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 process.noDeprecation = true;
 
 module.exports = {
     context: path.join(process.cwd(), 'dev'),
-    entry: './index.js',
+    entry: './index.jsx',
     output: {
         path: path.join(process.cwd(), 'dist'),
         filename: `[name]${process.env.NODE_ENV === 'development' ? '' : '[chunkhash:8]'}.js`,
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.html$/,
                 use: 'html-loader',
             },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: [
-                    {
+                use: [{
                         loader: 'babel-loader',
                         query: {
                             presets: ['env'],
@@ -44,7 +42,6 @@ module.exports = {
             //     use: ExtractTextPlugin.extract({
             //         fallback: 'style-loader',
             //         use: 'css-loader',
-            //         publicPath: '/dist',
             //     }),
             // },
             // {
@@ -59,7 +56,6 @@ module.exports = {
             //             },
             //             'sass-loader',
             //         ],
-            //         publicPath: '/dist',
             //     }),
             // },
             {
@@ -73,7 +69,7 @@ module.exports = {
                 test: /\.s[a|c]ss$/,
                 use: [
                     'style-loader',
-                    'css-loader', // ?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]
+                    'css-loader', // ?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]
                     {
                         loader: 'postcss-loader',
                         options: postcssConfig,
@@ -92,7 +88,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.jsx'],
         modules: [
             'node_modules',
         ],

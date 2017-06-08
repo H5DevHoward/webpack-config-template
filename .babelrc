@@ -1,10 +1,14 @@
 {
     "presets": [
-        ["es2015", {
-            "modules": false,
-        }],
+        [
+            "es2015",
+            {
+                "modules": false
+            }
+        ],
         "stage-0",
-        "stage-3"
+        "stage-3",
+        "react"
     ],
     "plugins": [
         "transform-runtime"
