@@ -10,6 +10,7 @@
     "json"
   ],
   "rules": {
+    "global-require": "off",
     "import/newline-after-import": "off",
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": [

@@ -10,6 +10,7 @@
         "html",
     ],
     "globals": {
+        "global-require": "off",
         "Promise": true,
         "console": true,
         "self": true,

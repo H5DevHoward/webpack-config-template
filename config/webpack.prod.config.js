@@ -1,38 +1,39 @@
 const webpack = require('webpack');
 const path = require('path');
-const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = require('./webpack.base.config');
 
 config.plugins = (config.plugins || []).concat([
-    new CleanWebpackPlugin(['dist'], {
-        root: path.resolve(__dirname, '..'),
-        verbose: true,
-    }),
-    new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"',
-        },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            drop_console: true,
-        },
-    }),
-    new CopyWebpackPlugin([
-        {
-            from: './',
-        },
-    ], {
-        ignore: [
-            'style/**/*',
-            'utils/**/*',
-            'index.js',
-            '.DS_Store',
-        ],
-    }),
+  new CleanWebpackPlugin(['dist'], {
+    root: path.resolve(__dirname, '..'),
+    verbose: true,
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: '"production"',
+    },
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      drop_console: true,
+    },
+  }),
+  new CopyWebpackPlugin([
+    {
+      from: './',
+    },
+  ], {
+    ignore: [
+      'components/**/*',
+      'plugins/**/*',
+      'styles/**/*',
+      'index.js',
+      'data.json',
+      '.DS_Store',
+    ],
+  }),
 ]);
 
 module.exports = config;
